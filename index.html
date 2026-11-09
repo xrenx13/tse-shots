@@ -109,13 +109,13 @@ footer{padding:50px 0 40px;text-align:center;color:var(--dim);font-size:12.5px}
 .chip.on{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--brand);color:var(--brand-ink);font-weight:600;padding:10px 18px;border-radius:10px;font-size:13px;z-index:99;opacity:0;pointer-events:none;transition:opacity .2s}
 .toast.show{opacity:1}
-@media(max-width:700px){.feat{flex-direction:column}.fthumb{flex:none;aspect-ratio:16/9}.lb-stage{padding:0 8px}.nav{display:none}.hpill{display:none}.hero{padding-top:44px}}
+@media(max-width:700px){#who{display:none!important}.who .b{font-size:11px;padding:5px 9px}.feat{flex-direction:column}.fthumb{flex:none;aspect-ratio:16/9}.lb-stage{padding:0 8px}.nav{display:none}.hpill{display:none}.hero{padding-top:44px}}
 </style>
 </head>
 <body>
 <header class="top"><div class="hin">
   <a class="logo" href="./"><img src="https://live-tse.vercel.app/thoughtspot-logo.svg" alt="ThoughtSpot" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'ThoughtSpot'}))"></a>
-  <div class="who"><span id="who"></span><span class="hpill">TSE EMBEDDED SCREENSHOTS</span></div>
+  <div class="who"><span id="who"></span><span class="hpill">TSE EMBEDDED SCREENSHOTS</span><a class="b teal sm" href="https://docs.google.com/spreadsheets/d/1Dw1zf5xNGzkUE3UW0-7ir5E244CSqgyIFIgVmu1w9_Y/edit?usp=sharing" target="_blank" rel="noopener">Request Additional Screenshots ↗</a></div>
 </div></header>
 
 <div id="app"></div>
@@ -180,7 +180,7 @@ const cfg=()=>({url:INDEX_URL||store.get('tse-url')||'',key:INDEX_KEY||store.get
 function renderGate(msg){
   $('#who').textContent='';
   $('#app').innerHTML = `<div class="wrap"><div class="hero">
-    <span class="eyebrow">TSE Top Prospects</span>
+    <span class="badge"><i></i>TSE EMBEDDED SCREENSHOTS</span>
     <h1>Find your prospect's <em>branded</em> screenshots</h1>
     <p>Search every branded Spotter and Liveboard screenshot in one place, without digging through Drive.</p></div>
     <div class="gate"><div class="box">
@@ -242,7 +242,7 @@ function shell(){
   $('#app').innerHTML=`
   <div class="wrap">
     <section class="hero">
-      <span class="badge"><i></i>TSE TOP PROSPECTS</span>
+      <span class="badge"><i></i>TSE EMBEDDED SCREENSHOTS</span>
       <h1>Branded screenshots for your <em>top prospects</em></h1>
       <p>Find ThoughtSpot Spotter and Liveboard visuals customized with your prospect's brand. Search, filter, preview, and grab them in seconds.</p>
     </section>
