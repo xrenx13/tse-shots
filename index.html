@@ -174,7 +174,7 @@ const industryOf = n => (INDUSTRIES.find(([,re])=>re.test(n))||['Other'])[0];
 
 /* ============ STATE ============ */
 let ASSETS=[], ACCOUNTS=[], UPDATED=0;
-const F = {q:'', region:'All', segment:'All', ae:'All', industry:'All', sort:'recent'};
+const F = {q:'', region:'All', segment:'All', rd:'All', industry:'All', sort:'recent'};
 const cfg=()=>({url:INDEX_URL||store.get('tse-url')||'',key:INDEX_KEY||store.get('tse-key')||''});
 
 function renderGate(msg){
@@ -208,14 +208,14 @@ function toAsset(f){
   const theme=(base.match(/(?:^|[_\s-])(light|dark)(?:[_\s-]|$)/i)||[])[1]?.toLowerCase()||'';
   let rest=base.replace(/(?:^|[_\s-])(light|dark)(?=[_\s-]|$)/i,' ').replace(account,'').replace(/[_-]+/g,' ').trim();
   const product = rest ? rest.replace(/\b\w/g,c=>c.toUpperCase()) : 'Screenshot';
-  return {id:f.id,name:f.name,account,region:p[0]||'—',segment:p[1]||'—',ae:p[2]||'—',sub:p.length>4?p[3]:'',
+  return {id:f.id,name:f.name,account,region:p[0]||'—',segment:p[1]||'—',rd:p[2]||'—',sub:p.length>4?p[3]:'',
     theme,product,mime:f.mime,created:f.created,thumb:`https://drive.google.com/thumbnail?id=${f.id}&sz=w640`,
     link:f.link||`https://drive.google.com/file/d/${f.id}/view`,industry:industryOf(account)};
 }
 function group(assets){
   const m=new Map();
-  for(const a of assets){const k=[a.region,a.segment,a.ae,a.sub,a.account].join('/');
-    if(!m.has(k)) m.set(k,{key:k,account:a.account,region:a.region,segment:a.segment,ae:a.ae,sub:a.sub,industry:a.industry,assets:[],latest:0});
+  for(const a of assets){const k=[a.region,a.segment,a.rd,a.sub,a.account].join('/');
+    if(!m.has(k)) m.set(k,{key:k,account:a.account,region:a.region,segment:a.segment,rd:a.rd,sub:a.sub,industry:a.industry,assets:[],latest:0});
     const g=m.get(k); g.assets.push(a); g.latest=Math.max(g.latest,+new Date(a.created));}
   for(const g of m.values()){
     g.assets.sort((x,y)=>(x.mime==='image/gif')-(y.mime==='image/gif')||(y.theme==='light')-(x.theme==='light')||x.name.localeCompare(y.name));
@@ -229,11 +229,11 @@ function attachThumb(img,a){ img.onload=()=>img.classList.add('ok'); img.src=a.t
 function counts(list,key){const m={};list.forEach(a=>m[a[key]]=(m[a[key]]||0)+1);return m}
 function matches(g,skip){
   const q=F.q.trim().toLowerCase();
-  if(q){const hay=[g.account,g.ae,g.sub,g.region,g.segment,g.industry,...g.assets.map(a=>a.name)].join(' ').toLowerCase();
+  if(q){const hay=[g.account,g.rd,g.sub,g.region,g.segment,g.industry,...g.assets.map(a=>a.name)].join(' ').toLowerCase();
     if(!q.split(/\s+/).every(t=>hay.includes(t))) return false}
   if(skip!=='region'&&F.region!=='All'&&g.region!==F.region) return false;
   if(skip!=='segment'&&F.segment!=='All'&&g.segment!==F.segment) return false;
-  if(skip!=='ae'&&F.ae!=='All'&&g.ae!==F.ae) return false;
+  if(skip!=='rd'&&F.rd!=='All'&&g.rd!==F.rd) return false;
   if(skip!=='industry'&&F.industry!=='All'&&g.industry!==F.industry) return false;
   return true;
 }
@@ -249,11 +249,11 @@ function shell(){
     <div id="feat" class="feat-wrap"></div>
     <div class="controls">
       <div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="q" type="search" placeholder="Search prospects, AEs, industries…" autocomplete="off"></div>
+        <input id="q" type="search" placeholder="Search prospects, rds, industries…" autocomplete="off"></div>
       <select id="fIndustry" aria-label="Industry"></select>
       <select id="fRegion" aria-label="Region"></select>
       <select id="fSegment" aria-label="Segment"></select>
-      <select id="fAe" aria-label="AE"></select>
+      <select id="frd" aria-label="rd"></select>
       <select id="fSort" aria-label="Sort"><option value="recent">Recently added</option><option value="az">A → Z</option><option value="assets">Most screenshots</option></select>
       <span class="grow"></span>
       <button class="btn primary" id="refresh" title="Check Drive for new screenshots">↻ Refresh</button>
@@ -263,7 +263,7 @@ function shell(){
   </div>`;
   $('#q').value=F.q;
   $('#q').addEventListener('input',e=>{F.q=e.target.value;paint()});
-  [['fIndustry','industry'],['fRegion','region'],['fSegment','segment'],['fAe','ae']].forEach(([id,k])=>$('#'+id).addEventListener('change',e=>{F[k]=e.target.value;paint()}));
+  [['fIndustry','industry'],['fRegion','region'],['fSegment','segment'],['frd','rd']].forEach(([id,k])=>$('#'+id).addEventListener('change',e=>{F[k]=e.target.value;paint()}));
   $('#fSort').value=F.sort;
   $('#fSort').addEventListener('change',e=>{F.sort=e.target.value;paint()});
   $('#refresh').addEventListener('click',refresh);
@@ -284,7 +284,7 @@ function cardHtml(g,newCut){
   return `<div class="card" tabindex="0" role="button" data-open="${esc(g.key)}">
     <div class="thumb"><div class="ph">${esc(g.account[0]||'?')}</div><img data-k="${esc(g.key)}" alt="${esc(g.account)}" loading="lazy">${g.latest>newCut?'<span class="new">NEW</span>':''}</div>
     <div class="cb"><div class="ct"><h3>${esc(g.account)}</h3><span class="pill ${pillOf(g.industry)}">${esc(g.industry)}</span></div>
-    <p class="cd">${n} screenshot${n>1?'s':''}${prodList(g)?' · '+esc(prodList(g)):''}<br>AE ${esc(g.ae)}${g.sub?' · '+esc(g.sub):''} · ${esc(g.region)} ${esc(segShort(g))}</p>
+    <p class="cd">${n} screenshot${n>1?'s':''}${prodList(g)?' · '+esc(prodList(g)):''}<br>rd ${esc(g.rd)}${g.sub?' · '+esc(g.sub):''} · ${esc(g.region)} ${esc(segShort(g))}</p>
     <div class="ca"><span class="b teal sm">View screenshots</span><a class="b blue" href="${esc(g.cover.link)}" target="_blank" rel="noopener">Open in Drive ↗</a></div></div></div>`;
 }
 function featHtml(g){
@@ -292,20 +292,20 @@ function featHtml(g){
   return `<span class="badge"><i></i>LATEST ADDITION</span>
   <div class="feat" data-open="${esc(g.key)}"><div class="fthumb"><div class="ph">${esc(g.account[0]||'?')}</div><img data-k="${esc(g.key)}" alt="${esc(g.account)}"></div>
   <div class="fbody"><div class="ft"><h2>${esc(g.account)}</h2><span class="pill ${pillOf(g.industry)}">${esc(g.industry)}</span></div>
-  <p>${n} branded screenshot${n>1?'s':''}${prodList(g)?' ('+esc(prodList(g))+')':''} for ${esc(g.account)}. AE ${esc(g.ae)}${g.sub?' · '+esc(g.sub):''} · ${esc(g.region)} ${esc(segShort(g))}.</p>
+  <p>${n} branded screenshot${n>1?'s':''}${prodList(g)?' ('+esc(prodList(g))+')':''} for ${esc(g.account)}. rd ${esc(g.rd)}${g.sub?' · '+esc(g.sub):''} · ${esc(g.region)} ${esc(segShort(g))}.</p>
   <div class="actions"><span class="b teal">View screenshots</span><a class="b blue" href="${esc(g.cover.link)}" target="_blank" rel="noopener">Open in Drive ↗</a></div></div></div>`;
 }
 function paint(){
   fillSelect('fRegion','regions','region','region');
   fillSelect('fSegment','segments','segment','segment');
-  fillSelect('fAe','AEs','ae','ae');
+  fillSelect('frd','rds','rd','rd');
   const base=ACCOUNTS.filter(g=>matches(g,'industry')), ic=counts(base,'industry');
   $('#fIndustry').innerHTML=`<option value="All">All industries</option>`+Object.keys(ic).sort().map(i=>`<option value="${esc(i)}" ${F.industry===i?'selected':''}>${esc(i)} (${ic[i]})</option>`).join('');
   const list=ACCOUNTS.filter(g=>matches(g));
   const sorters={recent:(a,b)=>b.latest-a.latest,az:(a,b)=>a.account.localeCompare(b.account),assets:(a,b)=>b.assets.length-a.assets.length||a.account.localeCompare(b.account)};
   list.sort(sorters[F.sort]);
   const newCut=Date.now()-21*864e5;
-  const filtering=F.q||F.region!=='All'||F.segment!=='All'||F.ae!=='All'||F.industry!=='All';
+  const filtering=F.q||F.region!=='All'||F.segment!=='All'||F.rd!=='All'||F.industry!=='All';
   const latest=[...ACCOUNTS].sort(sorters.recent)[0];
   $('#feat').innerHTML=(!filtering&&latest)?featHtml(latest):'';
   $('#feat').style.display=(!filtering&&latest)?'':'none';
@@ -322,7 +322,7 @@ function openLb(k){LB={g:ACCOUNTS.find(g=>g.key===k),i:0,theme:'All'};$('#lb').c
 function showLb(){
   const list=lbList(), a=list[LB.i]; if(!a) return;
   $('#lbTitle').textContent=LB.g.account;
-  $('#lbSub').textContent=`${LB.g.industry} · ${LB.g.region} ${LB.g.segment.replace(/^(NA|EMEA|ANZ)\s*/,'')} · AE ${LB.g.ae}${LB.g.sub?' · '+LB.g.sub:''}`;
+  $('#lbSub').textContent=`${LB.g.industry} · ${LB.g.region} ${LB.g.segment.replace(/^(NA|EMEA|ANZ)\s*/,'')} · rd ${LB.g.rd}${LB.g.sub?' · '+LB.g.sub:''}`;
   $('#lbDrive').href=a.link;
   const themes=['All',...new Set(LB.g.assets.map(x=>x.theme).filter(Boolean))];
   $('#lbBot').innerHTML=(themes.length>2?themes.map(t=>`<button class="chip ${LB.theme===t?'on':''}" data-t="${t}">${t==='All'?'All themes':t[0].toUpperCase()+t.slice(1)}</button>`).join('')+'<span style="width:12px"></span>':'')+
@@ -345,11 +345,11 @@ $('#lbDl').onclick=()=>{const a=lbList()[LB.i];if(a.demo)return toast('Demo imag
 function demoAssets(){
   const rows=[['NA','NA Enterprise','Lefebvre','Aflac'],['NA','NA Enterprise','Lefebvre','Cox Automotive'],['NA','NA Enterprise','Lefebvre','Norwegian Cruise Line'],['NA','NA Enterprise','Lefebvre','Manhattan Associates'],['NA','NA Enterprise','Strachan','UHG'],['NA','NA Enterprise','Strachan','Truist'],['NA','NA Enterprise','Strachan','Novant Health'],['NA','NA Commercial','Borger','Hilton Grand Vacations'],['NA','NA Commercial','Rowen','Mitsubishi Electric Trane'],['EMEA','EMEA Enterprise','Okafor','Zurich Insurance'],['EMEA','EMEA Commercial','Brandt','Vodafone'],['EMEA','EMEA Enterprise','Okafor','Siemens Energy'],['ANZ','ANZ Enterprise','Hughes','Telstra'],['ANZ','ANZ Commercial','Nguyen','Woolworths Group'],['ANZ','ANZ Enterprise','Hughes','Westpac']];
   const hues=[215,12,160,280,40,330,190,100]; const out=[]; let n=0;
-  rows.forEach(([region,segment,ae,account],ri)=>{
+  rows.forEach(([region,segment,rd,account],ri)=>{
     ['light_spotter','dark_spotter','light_liveboard','dark_liveboard'].slice(0,2+(ri%3)).forEach((v,vi)=>{
       const dark=v.includes('dark'), h=hues[(ri+vi)%hues.length];
       const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='800'><rect width='1280' height='800' fill='${dark?'#15181e':'#f6f7fb'}'/><rect width='1280' height='70' fill='hsl(${h} 70% 50%)'/><text x='40' y='46' font-family='Arial' font-size='28' font-weight='700' fill='#fff'>${account}</text>${[0,1,2].map(i=>`<rect x='${40+i*400}' y='120' width='360' height='220' rx='14' fill='${dark?'#20242c':'#fff'}'/><rect x='${60+i*400}' y='${280-(i+2)*28}' width='40' height='${(i+2)*28}' fill='hsl(${h} 70% 55%)'/><rect x='${120+i*400}' y='${280-(i+4)*18}' width='40' height='${(i+4)*18}' fill='hsl(${h+30} 60% 65%)'/>`).join('')}<rect x='40' y='380' width='1200' height='380' rx='14' fill='${dark?'#20242c':'#fff'}'/><polyline fill='none' stroke='hsl(${h} 70% 50%)' stroke-width='6' points='80,700 260,620 440,650 620,520 800,560 980,450 1180,420'/><text x='70' y='430' font-family='Arial' font-size='22' fill='${dark?'#aab':'#667'}'>${v.replace('_',' · ')}</text></svg>`;
-      out.push({id:'demo'+(n++),demo:true,name:`${account.replace(/ /g,'')}_${v}.png`,account,region,segment,ae,sub:'',theme:v.split('_')[0],product:v.split('_')[1][0].toUpperCase()+v.split('_')[1].slice(1),
+      out.push({id:'demo'+(n++),demo:true,name:`${account.replace(/ /g,'')}_${v}.png`,account,region,segment,rd,sub:'',theme:v.split('_')[0],product:v.split('_')[1][0].toUpperCase()+v.split('_')[1].slice(1),
         mime:'image/png',created:new Date(Date.now()-(ri*5+vi)*864e5).toISOString(),thumb:'data:image/svg+xml;utf8,'+encodeURIComponent(svg),link:'https://drive.google.com/drive/folders/'+ROOT_FOLDER_ID,industry:industryOf(account)});
     });
   });
