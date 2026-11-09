@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TSE Top Prospect Showcase | ThoughtSpot</title>
+<meta name="description" content="Find branded ThoughtSpot screenshots for your top prospects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf9f7; --surface:#fff; --ink:#14161a; --muted:#6b7280; --line:#e7e5e0;
+  --brand:#2770ef; --brand-ink:#fff; --accent:#f26b3a; --chip:#f0eee9; --shadow:0 1px 2px rgba(20,22,26,.05),0 8px 24px rgba(20,22,26,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0f1114;--surface:#171a1f;--ink:#f3f4f6;--muted:#9aa1ad;--line:#272b33;--chip:#1f232a;--shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:18px}
+.logo i{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--accent));display:inline-block}
+.who{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}
+.btn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 16px;font:500 13px Inter,sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.hero{padding:44px 0 28px;text-align:center}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+.hero h1{font-size:clamp(34px,5.5vw,60px);line-height:1.05;letter-spacing:-.03em;margin:14px auto 14px;font-weight:600;max-width:15em}
+.hero h1 em{font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;color:var(--brand);letter-spacing:-.01em}
+.hero p{max-width:40em;margin:0 auto;color:var(--muted);font-size:17px}
+.stats{display:flex;justify-content:center;gap:28px;margin-top:22px;color:var(--muted);font-size:13px}
+.stats b{color:var(--ink);font-size:20px;font-weight:600;display:block;letter-spacing:-.02em}
+.controls{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);padding:14px 0 10px;border-bottom:1px solid var(--line)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{flex:1 1 280px;position:relative}
+.search input{width:100%;padding:11px 14px 11px 40px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:15px Inter,sans-serif;outline:none}
+.search input:focus{border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 20%,transparent)}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+select{padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 13px Inter,sans-serif;cursor:pointer;max-width:200px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{border:1px solid transparent;background:var(--chip);color:var(--ink);padding:6px 13px;border-radius:999px;font:500 13px Inter,sans-serif;cursor:pointer;white-space:nowrap}
+.chip:hover{border-color:var(--line)}
+.chip.on{background:var(--ink);color:var(--bg)}
+.chip small{opacity:.55;margin-left:5px;font-weight:500}
+.section-h{display:flex;align-items:baseline;justify-content:space-between;margin:30px 0 14px}
+.section-h h2{margin:0;font-size:19px;letter-spacing:-.02em;font-weight:600}
+.section-h span{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;text-align:left;padding:0;color:inherit;font:inherit}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.thumb{aspect-ratio:16/10;background:var(--chip);position:relative;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;opacity:0;transition:opacity .3s}
+.thumb img.ok{opacity:1}
+.thumb .count{position:absolute;right:10px;bottom:10px;background:rgba(20,22,26,.78);color:#fff;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px}
+.thumb .new{position:absolute;left:10px;top:10px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;padding:3px 8px;border-radius:999px}
+.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:34px;font-weight:700;color:var(--muted);opacity:.35}
+.meta{padding:14px 16px 16px}
+.meta h3{margin:0 0 6px;font-size:16px;letter-spacing:-.01em;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.tag{font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;background:color-mix(in srgb,var(--brand) 12%,transparent);color:var(--brand)}
+.tag.alt{background:var(--chip);color:var(--muted)}
+.sub{font-size:12.5px;color:var(--muted)}
+.empty,.gate{text-align:center;color:var(--muted);padding:70px 20px}
+.gate h2{color:var(--ink);font-size:24px;letter-spacing:-.02em;margin:0 0 8px}
+.gate .box{max-width:520px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:var(--shadow)}
+.gate input{width:100%;margin:12px 0;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:13px ui-monospace,monospace}
+.err{color:#d93025;font-size:13px;margin-top:10px}
+.bar{height:4px;background:var(--chip);border-radius:4px;overflow:hidden;max-width:320px;margin:18px auto 0}
+.bar i{display:block;height:100%;width:0;background:var(--brand);transition:width .2s}
+footer{padding:50px 0 40px;text-align:center;color:var(--muted);font-size:12.5px}
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(10,12,15,.92);z-index:50;display:none;flex-direction:column;color:#fff}
+.lb.open{display:flex}
+.lb-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:16px 22px;flex-wrap:wrap}
+.lb-top h3{margin:0;font-size:20px;letter-spacing:-.01em}
+.lb-top .sub{color:#aab1bd}
+.lb-actions{display:flex;gap:8px;flex-wrap:wrap}
+.lb .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);color:#fff}
+.lb .btn:hover{background:rgba(255,255,255,.2)}
+.lb .btn.primary{background:var(--brand);border-color:var(--brand)}
+.lb-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;position:relative;padding:0 64px}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb-stage iframe{display:none;width:100%;height:100%;max-width:1500px;border:0;border-radius:8px;background:#000}
+.lb-load{position:absolute;color:#aab1bd;font-size:14px}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:20px;cursor:pointer}
+.nav:hover{background:rgba(255,255,255,.25)}
+.nav.l{left:12px}.nav.r{right:12px}
+.lb-bot{padding:14px 22px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center}
+.lb-bot .chip{background:rgba(255,255,255,.1);color:#fff}
+.lb-bot .chip.on{background:#fff;color:#111}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:13px;z-index:99;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+@media(max-width:640px){.lb-stage{padding:0 8px}.nav{display:none}.stats{gap:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo"><i></i>ThoughtSpot</div>
+    <div class="who" id="who"></div>
+  </header>
+</div>
+
+<div id="app"></div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <div class="lb-top">
+    <div><h3 id="lbTitle"></h3><div class="sub" id="lbSub"></div></div>
+    <div class="lb-actions">
+      <button class="btn" id="lbCopy">Copy link</button>
+      <a class="btn" id="lbDrive" target="_blank" rel="noopener">Open in Drive</a>
+      <button class="btn primary" id="lbDl">Download</button>
+      <button class="btn" id="lbClose">Close ✕</button>
+    </div>
+  </div>
+  <div class="lb-stage">
+    <button class="nav l" id="lbPrev" aria-label="Previous">←</button>
+    <div class="lb-load" id="lbLoad">Loading…</div>
+    <img id="lbImg" alt=""><iframe id="lbFrame" allow="autoplay" allowfullscreen></iframe>
+    <button class="nav r" id="lbNext" aria-label="Next">→</button>
+  </div>
+  <div class="lb-bot" id="lbBot"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ CONFIG ============ */
+const INDEX_URL = 'https://script.google.com/macros/s/AKfycby-uxiHZoyH2U9aNHot7if0-PXsrtQvcdvu29fqu4TNQO7s_RuBvQaq6CNrvPTWKgHE/exec';   // Apps Script web app URL (ends in /exec). Or enter once in the browser.
+const INDEX_KEY = 'U4e01jZzi63PY1PUnVoCnFuBMBspGg84';   // must match SECRET in Code.gs
+const CACHE_KEY = 'tse-index-v2';
+const ROOT_FOLDER_ID = '1ZC4CDSjNm-15IJbrB-uNFXYNaInuOv4U';
+
+/* ============ HELPERS ============ */
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const toast = m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),1800)};
+const DEMO = new URLSearchParams(location.search).has('demo');
+
+/* Industry inference from account name (first match wins) */
+const INDUSTRIES = [
+  ['Insurance', /aflac|insur|assurance|allstate|geico|progressive|state farm|nationwide|liberty|travelers|metlife|prudential|guardian|lincoln|chubb|aig\b|hartford|zurich|allianz|axa|suncorp|iag\b/i],
+  ['Healthcare', /health|uhg|united ?health|hospital|medical|clinic|novant|cigna|humana|anthem|elevance|kaiser|mayo|\bhca\b|labcorp|quest diag|dental|\bcare\b/i],
+  ['Life Sciences', /pharma|therapeut|\bbio|lilly|pfizer|merck|abbvie|novartis|roche|amgen|gilead|iqvia|sanofi|astra/i],
+  ['Hospitality & Travel', /hilton|marriott|hyatt|hotel|resort|cruise|norwegian|airline|airways|carnival|expedia|booking|travel|casino|mgm|wynn|qantas|virgin/i],
+  ['Banking & Financial Services', /bank|truist|financial|capital|credit|wells|chase|citi|schwab|fidelity|invest|wealth|trust\b|lending|mortgage|visa\b|mastercard|amex|paypal|fiserv|\bfis\b|stripe|westpac|\banz\b|nab\b|commonwealth|macquarie|asset|fund/i],
+  ['Automotive', /automotive|motor|\bford\b|\bgm\b|toyota|honda|\bcox\b|tesla|hyundai|nissan|bmw|volkswagen|carmax|autonation|auto\b/i],
+  ['Retail & CPG', /retail|store|walmart|target|costco|kroger|foods?\b|brands?\b|apparel|nike|coca|pepsi|consumer|grocer|woolworths|coles|ikea|amazon|nestl|unilever|procter|mondelez|kraft|kellogg/i],
+  ['Telecom & Media', /telecom|comcast|verizon|at&t|media|entertainment|broadcast|spectrum|telstra|optus|vodafone|\bbt\b|t-mobile|netflix|disney|warner|fox\b/i],
+  ['Energy & Utilities', /energy|\boil\b|\bgas\b|power|utilit|exxon|chevron|shell\b|duke|origin|agl\b|bp\b/i],
+  ['Manufacturing & Industrial', /manufactur|mitsubishi|trane|hvac|electric|industrial|steel|caterpillar|deere|\b3m\b|honeywell|siemens|boeing|lockheed|aerospace|chemical|packag/i],
+  ['Logistics & Transportation', /logistic|freight|\bups\b|fedex|transport|\brail|shipping|trucking|\bdhl\b/i],
+  ['Public Sector & Education', /universit|college|school|state of|county|city of|\bgov|federal|army|navy|department|education/i],
+  ['Technology & Software', /software|tech|systems|cloud|data\b|cyber|manhan|oracle|\bsap\b|adobe|salesforce|microsoft|google|\bibm\b|cisco|dell\b|intel\b|nvidia/i],
+];
+const industryOf = n => (INDUSTRIES.find(([,re])=>re.test(n))||['Other'])[0];
+
+/* ============ STATE ============ */
+let ASSETS=[], ACCOUNTS=[], UPDATED=0;
+const F = {q:'', region:'All', segment:'All', ae:'All', industry:'All', sort:'recent'};
+const cfg=()=>({url:INDEX_URL||store.get('tse-url')||'',key:INDEX_KEY||store.get('tse-key')||''});
+
+function renderGate(msg){
+  $('#who').textContent='';
+  $('#app').innerHTML = `<div class="wrap"><div class="hero">
+    <span class="eyebrow">TSE Top Prospects</span>
+    <h1>Find your prospect's <em>branded</em> screenshots</h1>
+    <p>Search every branded Spotter and Liveboard screenshot in one place, without digging through Drive.</p></div>
+    <div class="gate"><div class="box">
+    <h2>One-time setup</h2><p>Paste the Apps Script web app URL and key. They're stored in this browser only.</p>
+    <input id="curl" placeholder="https://script.google.com/macros/s/.../exec" value="${esc(cfg().url)}">
+    <input id="ckey" placeholder="Key (SECRET from Code.gs)" value="${esc(cfg().key)}">
+    <button class="btn primary" id="savecfg">Save &amp; continue</button>
+    <p style="margin-top:18px;font-size:13px">Or <a href="?demo" style="color:var(--brand)">preview with sample data</a></p>
+    ${msg?`<div class="err">${esc(msg)}</div>`:''}
+    </div></div></div>`;
+  $('#savecfg').addEventListener('click',()=>{const u=$('#curl').value.trim(),k=$('#ckey').value.trim();if(u&&k){store.set('tse-url',u);store.set('tse-key',k);start()}});
+}
+
+/* ============ DATA ============ */
+async function fetchIndex(action){
+  const {url,key}=cfg();
+  const r=await fetch(`${url}${url.includes('?')?'&':'?'}action=${action}&key=${encodeURIComponent(key)}`);
+  let j; try{j=await r.json()}catch(e){throw new Error('Bad response from index service')}
+  if(j.error) throw new Error(j.error);
+  return j;
+}
+function toAsset(f){
+  const p=f.path||[], account=p[p.length-1]||'Unsorted';
+  const base=f.name.replace(/\.[^.]+$/,'');
+  const theme=(base.match(/(?:^|[_\s-])(light|dark)(?:[_\s-]|$)/i)||[])[1]?.toLowerCase()||'';
+  let rest=base.replace(/(?:^|[_\s-])(light|dark)(?=[_\s-]|$)/i,' ').replace(account,'').replace(/[_-]+/g,' ').trim();
+  const product = rest ? rest.replace(/\b\w/g,c=>c.toUpperCase()) : 'Screenshot';
+  return {id:f.id,name:f.name,account,region:p[0]||'—',segment:p[1]||'—',ae:p[2]||'—',sub:p.length>4?p[3]:'',
+    theme,product,mime:f.mime,created:f.created,thumb:`https://drive.google.com/thumbnail?id=${f.id}&sz=w640`,
+    link:f.link||`https://drive.google.com/file/d/${f.id}/view`,industry:industryOf(account)};
+}
+function group(assets){
+  const m=new Map();
+  for(const a of assets){const k=[a.region,a.segment,a.ae,a.sub,a.account].join('/');
+    if(!m.has(k)) m.set(k,{key:k,account:a.account,region:a.region,segment:a.segment,ae:a.ae,sub:a.sub,industry:a.industry,assets:[],latest:0});
+    const g=m.get(k); g.assets.push(a); g.latest=Math.max(g.latest,+new Date(a.created));}
+  for(const g of m.values()){
+    g.assets.sort((x,y)=>(x.mime==='image/gif')-(y.mime==='image/gif')||(y.theme==='light')-(x.theme==='light')||x.name.localeCompare(y.name));
+    g.cover=g.assets[0];
+  }
+  return [...m.values()];
+}
+function attachThumb(img,a){ img.onload=()=>img.classList.add('ok'); img.src=a.thumb; }
+
+/* ============ UI ============ */
+function counts(list,key){const m={};list.forEach(a=>m[a[key]]=(m[a[key]]||0)+1);return m}
+function matches(g,skip){
+  const q=F.q.trim().toLowerCase();
+  if(q){const hay=[g.account,g.ae,g.sub,g.region,g.segment,g.industry,...g.assets.map(a=>a.name)].join(' ').toLowerCase();
+    if(!q.split(/\s+/).every(t=>hay.includes(t))) return false}
+  if(skip!=='region'&&F.region!=='All'&&g.region!==F.region) return false;
+  if(skip!=='segment'&&F.segment!=='All'&&g.segment!==F.segment) return false;
+  if(skip!=='ae'&&F.ae!=='All'&&g.ae!==F.ae) return false;
+  if(skip!=='industry'&&F.industry!=='All'&&g.industry!==F.industry) return false;
+  return true;
+}
+function shell(){
+  const regions=[...new Set(ACCOUNTS.map(g=>g.region))].sort();
+  $('#app').innerHTML=`
+  <div class="wrap">
+    <section class="hero">
+      <span class="eyebrow">TSE Top Prospects</span>
+      <h1>Branded screenshots for your <em>top prospects</em></h1>
+      <p>Find ThoughtSpot Spotter and Liveboard visuals customized with your prospect's brand. Search, filter, preview, and grab them in seconds.</p>
+      <div class="stats"><div><b>${ACCOUNTS.length}</b>prospects</div><div><b>${ASSETS.length}</b>screenshots</div><div><b>${regions.length}</b>regions</div></div>
+    </section>
+    <div class="controls">
+      <div class="row">
+        <div class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Search prospect, AE, industry…" autocomplete="off"></div>
+        <select id="fRegion" aria-label="Region"></select>
+        <select id="fSegment" aria-label="Segment"></select>
+        <select id="fAe" aria-label="AE"></select>
+        <select id="fSort" aria-label="Sort"><option value="recent">Recently added</option><option value="az">A → Z</option><option value="assets">Most screenshots</option></select>
+        <button class="btn" id="refresh" title="Check Drive for new screenshots">↻ Refresh</button>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div id="recent"></div>
+    <div id="results"></div>
+    <footer>Source: Drive › AE Screenshots · Auto-updates hourly · Industry tags are inferred from account names · Images need your ThoughtSpot Google login</footer>
+  </div>`;
+  $('#q').value=F.q;
+  $('#q').addEventListener('input',e=>{F.q=e.target.value;paint()});
+  [['fRegion','region'],['fSegment','segment'],['fAe','ae']].forEach(([id,k])=>$('#'+id).addEventListener('change',e=>{F[k]=e.target.value;paint()}));
+  $('#fSort').addEventListener('change',e=>{F.sort=e.target.value;paint()});
+  $('#refresh').addEventListener('click',refresh);
+  $('#chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(c){F.industry=c.dataset.v;paint()}});
+  $('#results').addEventListener('click',cardClick);
+  $('#recent').addEventListener('click',cardClick);
+}
+function cardClick(e){const c=e.target.closest('.card');if(c)openLb(c.dataset.k)}
+function fillSelect(id,label,key,skip){
+  const vals=[...new Set(ACCOUNTS.filter(g=>matches(g,skip)).map(g=>g[key]))].sort();
+  const el=$('#'+id); if(F[key]!=='All'&&!vals.includes(F[key])) F[key]='All';
+  el.innerHTML=`<option value="All">All ${label}</option>`+vals.map(v=>`<option ${v===F[key]?'selected':''}>${esc(v)}</option>`).join('');
+}
+function cardHtml(g,newCut){
+  const isNew=g.latest>newCut;
+  return `<button class="card" data-k="${esc(g.key)}">
+    <div class="thumb"><div class="ph">${esc(g.account[0]||'?')}</div><img data-k="${esc(g.key)}" alt="${esc(g.account)}" loading="lazy">
+    ${isNew?'<span class="new">NEW</span>':''}<span class="count">${g.assets.length} screenshot${g.assets.length>1?'s':''}</span></div>
+    <div class="meta"><h3>${esc(g.account)}</h3>
+    <div class="tags"><span class="tag">${esc(g.industry)}</span><span class="tag alt">${esc(g.region)} · ${esc(g.segment.replace(/^(NA|EMEA|ANZ)\s*/,''))}</span></div>
+    <div class="sub">AE: ${esc(g.ae)}${g.sub?' · '+esc(g.sub):''}</div></div></button>`;
+}
+function paint(){
+  fillSelect('fRegion','regions','region','region');
+  fillSelect('fSegment','segments','segment','segment');
+  fillSelect('fAe','AEs','ae','ae');
+  const base=ACCOUNTS.filter(g=>matches(g,'industry')), ic=counts(base,'industry');
+  const inds=Object.keys(ic).sort();
+  $('#chips').innerHTML=`<button class="chip ${F.industry==='All'?'on':''}" data-v="All">All industries<small>${base.length}</small></button>`+
+    inds.map(i=>`<button class="chip ${F.industry===i?'on':''}" data-v="${esc(i)}">${esc(i)}<small>${ic[i]}</small></button>`).join('');
+  const list=ACCOUNTS.filter(g=>matches(g));
+  const sorters={recent:(a,b)=>b.latest-a.latest,az:(a,b)=>a.account.localeCompare(b.account),assets:(a,b)=>b.assets.length-a.assets.length||a.account.localeCompare(b.account)};
+  list.sort(sorters[F.sort]);
+  const newCut=Date.now()-21*864e5;
+  const filtering=F.q||F.region!=='All'||F.segment!=='All'||F.ae!=='All'||F.industry!=='All';
+  const recent=filtering?[]:[...ACCOUNTS].sort(sorters.recent).slice(0,4);
+  $('#recent').innerHTML=recent.length?`<div class="section-h"><h2>Recently added</h2><span>Latest screenshots to land in Drive</span></div><div class="grid">${recent.map(g=>cardHtml(g,newCut)).join('')}</div>`:'';
+  $('#results').innerHTML=`<div class="section-h"><h2>${filtering?'Results':'All prospects'}</h2><span>${list.length} prospect${list.length===1?'':'s'}</span></div>`+
+    (list.length?`<div class="grid">${list.map(g=>cardHtml(g,newCut)).join('')}</div>`:'<div class="empty">No prospects match those filters.</div>');
+  const byKey=new Map(ACCOUNTS.map(g=>[g.key,g]));
+  document.querySelectorAll('img[data-k]').forEach(img=>attachThumb(img,byKey.get(img.dataset.k).cover));
+}
+
+/* ============ LIGHTBOX ============ */
+let LB={g:null,i:0,theme:'All'};
+function lbList(){return LB.g.assets.filter(a=>LB.theme==='All'||a.theme===LB.theme)}
+function openLb(k){LB={g:ACCOUNTS.find(g=>g.key===k),i:0,theme:'All'};$('#lb').classList.add('open');document.body.style.overflow='hidden';showLb()}
+function showLb(){
+  const list=lbList(), a=list[LB.i]; if(!a) return;
+  $('#lbTitle').textContent=LB.g.account;
+  $('#lbSub').textContent=`${LB.g.industry} · ${LB.g.region} ${LB.g.segment.replace(/^(NA|EMEA|ANZ)\s*/,'')} · AE ${LB.g.ae}${LB.g.sub?' · '+LB.g.sub:''}`;
+  $('#lbDrive').href=a.link;
+  const themes=['All',...new Set(LB.g.assets.map(x=>x.theme).filter(Boolean))];
+  $('#lbBot').innerHTML=(themes.length>2?themes.map(t=>`<button class="chip ${LB.theme===t?'on':''}" data-t="${t}">${t==='All'?'All themes':t[0].toUpperCase()+t.slice(1)}</button>`).join('')+'<span style="width:12px"></span>':'')+
+    list.map((x,i)=>`<button class="chip ${i===LB.i?'on':''}" data-i="${i}">${esc(x.theme?x.theme[0].toUpperCase()+x.theme.slice(1)+' · ':'')}${esc(x.product)}${x.mime==='image/gif'?' (GIF)':''}</button>`).join('');
+  $('#lbPrev').style.visibility=$('#lbNext').style.visibility=list.length>1?'visible':'hidden';
+  const img=$('#lbImg'), fr=$('#lbFrame'); $('#lbLoad').style.display='none';
+  if(a.demo){fr.style.display='none';fr.src='about:blank';img.style.display='block';img.src=a.thumb}
+  else{img.style.display='none';fr.style.display='block';fr.src=`https://drive.google.com/file/d/${a.id}/preview`}
+}
+function lbStep(d){const n=lbList().length;LB.i=(LB.i+d+n)%n;showLb()}
+function closeLb(){$('#lb').classList.remove('open');$('#lbFrame').src='about:blank';document.body.style.overflow=''}
+$('#lbClose').onclick=closeLb; $('#lbPrev').onclick=()=>lbStep(-1); $('#lbNext').onclick=()=>lbStep(1);
+$('#lb').addEventListener('click',e=>{if(e.target.id==='lb'||e.target.classList.contains('lb-stage'))closeLb()});
+$('#lbBot').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;if(c.dataset.t){LB.theme=c.dataset.t;LB.i=0}else LB.i=+c.dataset.i;showLb()});
+document.addEventListener('keydown',e=>{if(!$('#lb').classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')lbStep(-1);if(e.key==='ArrowRight')lbStep(1)});
+$('#lbCopy').onclick=async()=>{const a=lbList()[LB.i];try{await navigator.clipboard.writeText(a.link);toast('Drive link copied')}catch(e){toast('Copy failed')}};
+$('#lbDl').onclick=()=>{const a=lbList()[LB.i];if(a.demo)return toast('Demo image');window.open(`https://drive.google.com/uc?export=download&id=${a.id}`,'_blank');toast('Downloading '+a.name)};
+
+/* ============ DEMO DATA ============ */
+function demoAssets(){
+  const rows=[['NA','NA Enterprise','Lefebvre','Aflac'],['NA','NA Enterprise','Lefebvre','Cox Automotive'],['NA','NA Enterprise','Lefebvre','Norwegian Cruise Line'],['NA','NA Enterprise','Lefebvre','Manhattan Associates'],['NA','NA Enterprise','Strachan','UHG'],['NA','NA Enterprise','Strachan','Truist'],['NA','NA Enterprise','Strachan','Novant Health'],['NA','NA Commercial','Borger','Hilton Grand Vacations'],['NA','NA Commercial','Rowen','Mitsubishi Electric Trane'],['EMEA','EMEA Enterprise','Okafor','Zurich Insurance'],['EMEA','EMEA Commercial','Brandt','Vodafone'],['EMEA','EMEA Enterprise','Okafor','Siemens Energy'],['ANZ','ANZ Enterprise','Hughes','Telstra'],['ANZ','ANZ Commercial','Nguyen','Woolworths Group'],['ANZ','ANZ Enterprise','Hughes','Westpac']];
+  const hues=[215,12,160,280,40,330,190,100]; const out=[]; let n=0;
+  rows.forEach(([region,segment,ae,account],ri)=>{
+    ['light_spotter','dark_spotter','light_liveboard','dark_liveboard'].slice(0,2+(ri%3)).forEach((v,vi)=>{
+      const dark=v.includes('dark'), h=hues[(ri+vi)%hues.length];
+      const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='800'><rect width='1280' height='800' fill='${dark?'#15181e':'#f6f7fb'}'/><rect width='1280' height='70' fill='hsl(${h} 70% 50%)'/><text x='40' y='46' font-family='Arial' font-size='28' font-weight='700' fill='#fff'>${account}</text>${[0,1,2].map(i=>`<rect x='${40+i*400}' y='120' width='360' height='220' rx='14' fill='${dark?'#20242c':'#fff'}'/><rect x='${60+i*400}' y='${280-(i+2)*28}' width='40' height='${(i+2)*28}' fill='hsl(${h} 70% 55%)'/><rect x='${120+i*400}' y='${280-(i+4)*18}' width='40' height='${(i+4)*18}' fill='hsl(${h+30} 60% 65%)'/>`).join('')}<rect x='40' y='380' width='1200' height='380' rx='14' fill='${dark?'#20242c':'#fff'}'/><polyline fill='none' stroke='hsl(${h} 70% 50%)' stroke-width='6' points='80,700 260,620 440,650 620,520 800,560 980,450 1180,420'/><text x='70' y='430' font-family='Arial' font-size='22' fill='${dark?'#aab':'#667'}'>${v.replace('_',' · ')}</text></svg>`;
+      out.push({id:'demo'+(n++),demo:true,name:`${account.replace(/ /g,'')}_${v}.png`,account,region,segment,ae,sub:'',theme:v.split('_')[0],product:v.split('_')[1][0].toUpperCase()+v.split('_')[1].slice(1),
+        mime:'image/png',created:new Date(Date.now()-(ri*5+vi)*864e5).toISOString(),thumb:'data:image/svg+xml;utf8,'+encodeURIComponent(svg),link:'https://drive.google.com/drive/folders/'+ROOT_FOLDER_ID,industry:industryOf(account)});
+    });
+  });
+  return out;
+}
+
+/* ============ BOOT ============ */
+function ingest(j){ASSETS=(j.files||[]).map(toAsset);ACCOUNTS=group(ASSETS);UPDATED=j.updated||0}
+function updLabel(){$('#who').textContent=UPDATED?'Updated '+new Date(UPDATED).toLocaleString([], {dateStyle:'medium',timeStyle:'short'}):''}
+async function start(){
+  if(DEMO){ASSETS=demoAssets();ACCOUNTS=group(ASSETS);$('#who').textContent='Demo data';shell();paint();return}
+  if(!cfg().url||!cfg().key) return renderGate();
+  let cached=null; try{cached=JSON.parse(store.get(CACHE_KEY)||'null')}catch(e){}
+  if(cached){ingest(cached);shell();paint();updLabel()}
+  else $('#app').innerHTML=`<div class="wrap"><div class="gate"><h2>Loading prospects…</h2><p>First load can take a minute while the index is built.</p></div></div>`;
+  try{
+    let j=await fetchIndex('get');
+    if(!j.files||!j.files.length) j=await fetchIndex('refresh');
+    if(!cached||j.updated!==cached.updated){ingest(j);store.set(CACHE_KEY,JSON.stringify(j));shell();paint()}
+    updLabel();
+  }catch(e){ if(!cached) renderGate('Could not load index: '+e.message) }
+}
+async function refresh(){
+  if(DEMO) return toast('Demo mode');
+  const btn=$('#refresh'); btn.disabled=true; btn.textContent='Checking Drive…';
+  const old=new Set(ASSETS.map(a=>a.id));
+  try{
+    const j=await fetchIndex('refresh'); ingest(j); store.set(CACHE_KEY,JSON.stringify(j));
+    const n=ASSETS.filter(a=>!old.has(a.id)).length;
+    shell(); paint(); updLabel();
+    toast(n?`${n} new screenshot${n>1?'s':''} found`:'Already up to date');
+  }catch(e){toast('Refresh failed: '+e.message);btn.disabled=false;btn.textContent='↻ Refresh'}
+}
+start();
+</script>
+</body>
+</html>
